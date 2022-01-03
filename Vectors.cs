@@ -55,15 +55,15 @@ namespace Vectors {
 		public static Vectorf operator -( Vectorf a, Vectorf b ) => a + ( -b );
 		public static Vectorf operator -( Vectorf a ) => -1 * a;
 
-		public static Vectorf operator *( int i, Vectorf a ) => new Vectorf( i * a.x, i * a.y, i * a.z );
+		public static Vectorf operator *( int i, Vectorf a )   => new Vectorf( i * a.x, i * a.y, i * a.z );
 		public static Vectorf operator *( float i, Vectorf a ) => new Vectorf( i * a.x, i * a.y, i * a.z );
 		public static Vectorf operator *( Vectorf a, float i ) => new Vectorf( i * a.x, i * a.y, i * a.z );
-		public static Vectorf operator *( Vectorf a, int i ) => new Vectorf( i * a.x, i * a.y, i * a.z );
+		public static Vectorf operator *( Vectorf a, int i )   => new Vectorf( i * a.x, i * a.y, i * a.z );
 
 		public static Vector operator *( double i, Vectorf a ) => a * i;
 		public static Vector operator *( Vectorf a, double i ) => a * i;
 
-		public static Vectorf operator /( Vectorf a, int i ) => 1 / i * a;
+		public static Vectorf operator /( Vectorf a, int i )   => 1 / i * a;
 		public static Vectorf operator /( Vectorf a, float i ) => 1 / i * a;
 
 		public static float operator *( Vectorf a, Vectorf b ) => dot( a, b );
@@ -71,6 +71,11 @@ namespace Vectors {
 		public static bool operator ==( Vectorf a, Vectorf b ) => a.Equals( b );
 		public static bool operator !=( Vectorf a, Vectorf b ) => !a.Equals( b );
 
+		public void Deconstruct( out float x, out float y, out float z ) {
+			x = this.x;
+			y = this.y;
+			z = this.z;
+		}
 		#endregion
 
 		#region methods
@@ -200,24 +205,30 @@ namespace Vectors {
 		public static Vector operator -( Vector a, Vector b ) => a + ( -b );
 		public static Vector operator -( Vector a ) => -1 * a;
 
-		public static Vector operator *( int i, Vector a ) => new Vector( i * a.x, i * a.y, i * a.z );
-		public static Vector operator *( float i, Vector a ) => new Vector( i * a.x, i * a.y, i * a.z );
+		public static Vector operator *( int i, Vector a )    => new Vector( i * a.x, i * a.y, i * a.z );
+		public static Vector operator *( float i, Vector a )  => new Vector( i * a.x, i * a.y, i * a.z );
 		public static Vector operator *( double i, Vector a ) => new Vector( i * a.x, i * a.y, i * a.z );
 		public static Vector operator *( Vector a, double i ) => new Vector( i * a.x, i * a.y, i * a.z );
-		public static Vector operator *( Vector a, float i ) => new Vector( i * a.x, i * a.y, i * a.z );
-		public static Vector operator *( Vector a, int i ) => new Vector( i * a.x, i * a.y, i * a.z );
+		public static Vector operator *( Vector a, float i )  => new Vector( i * a.x, i * a.y, i * a.z );
+		public static Vector operator *( Vector a, int i )    => new Vector( i * a.x, i * a.y, i * a.z );
 
-		public static Vector operator /( Vector a, int i ) => 1 / i * a;
-		public static Vector operator /( Vector a, float i ) => 1 / i * a;
+		public static Vector operator /( Vector a, int i )    => 1 / i * a;
+		public static Vector operator /( Vector a, float i )  => 1 / i * a;
 		public static Vector operator /( Vector a, double i ) => 1 / i * a;
 
 		public static double operator *( Vector a, Vector b ) => dot( a, b );
 
-		public static bool operator ==( Vector a, Vector b ) => a.Equals( b );
+		public static bool operator ==( Vector a, Vector b ) =>  a.Equals( b );
 		public static bool operator !=( Vector a, Vector b ) => !a.Equals( b );
 
 		public static implicit operator Vectorf( Vector a ) => new Vectorf( (float) a.x, (float) a.y, (float) a.z );
 		public static implicit operator Vector( Vectorf a ) => new Vector( a.x, a.y, a.z );
+
+		public void Deconstruct( out double x, out double y, out double z ) {
+			x = this.x;
+			y = this.y;
+			z = this.z;
+		}
 
 		#endregion
 
